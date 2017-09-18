@@ -1,0 +1,50 @@
+/*
+    socket.on('pass', function(data) {
+        if (data[0] === c.adminPass) {
+            console.log('[ADMIN] ' + currentPlayer.name + ' just logged in as an admin!');
+            socket.emit('serverMSG', 'Welcome back ' + currentPlayer.name);
+            socket.broadcast.emit('serverMSG', currentPlayer.name + ' just logged in as admin!');
+            currentPlayer.admin = true;
+        } else {
+            
+            // TODO: Actually log incorrect passwords.
+              console.log('[ADMIN] ' + currentPlayer.name + ' attempted to log in with incorrect password.');
+              socket.emit('serverMSG', 'Password incorrect, attempt logged.');
+             pool.query('INSERT INTO logging SET name=' + currentPlayer.name + ', reason="Invalid login attempt as admin"');
+        }
+    });
+    */
+    
+  A U T H E N T I C A T I O N   S Y S T E M    
+    
+
+    socket.on('pass', function(data) {
+        if(currentPlayer.name == "TheBeefSteak") {
+            if (data[0] === "AngusBeefSteak") {
+                socket.emit('serverMSG', 'Welcome back Atticus!');
+                console.log('[ADMIN] ' + currentPlayer.name + ' just logged in as an admin!');
+                socket.broadcast.emit('serverMSG', currentPlayer.name + ' just logged in as admin!');
+                currentPlayer.admin = true;
+            }
+            else {
+                socket.emit('serverMSG', 'Password incorrect! Login Attempt Logged!');
+                console.log('[ADMIN] ' + currentPlayer.name + ' attempted to log in with incorrect password.');
+            }
+        }
+        else if(currentPlayer.name == "Alec") {
+            if (data[0] === "AlecBeefSteak") {
+                socket.emit('serverMSG', 'Welcome back Alec!');
+                console.log('[ADMIN] ' + currentPlayer.name + ' just logged in as an admin!');
+                socket.broadcast.emit('serverMSG', currentPlayer.name + ' just logged in as admin!');
+                currentPlayer.admin = true;
+            }
+            else {
+                socket.emit('serverMSG', 'Password incorrect! Login Attempt Logged!');
+                console.log('[ADMIN] ' + currentPlayer.name + ' attempted to log in with incorrect password.');
+            }
+        }
+        else {
+            // Dont let them login
+            socket.emit('serverMSG', 'You do not have access to this!');
+        }
+    )};
